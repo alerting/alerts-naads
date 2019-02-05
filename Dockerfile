@@ -16,7 +16,7 @@ COPY . /go/src/github.com/alerting/alerts-naads
 RUN dep ensure
 RUN CGO_ENABLED=0 GOOS=linux go install .
 
-FROM scratch
+FROM alpine:3.9
 COPY --from=base /go/bin/alerts-naads /alerts-naads
 USER 10000
 ENTRYPOINT ["/alerts-naads"]
