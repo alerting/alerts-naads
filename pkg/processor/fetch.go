@@ -17,6 +17,8 @@ import (
 	"github.com/lovoo/goka/kafka"
 )
 
+var notFoundError = errors.New("Not found")
+
 func clean(str string) string {
 	str = strings.Replace(str, "-", "_", -1)
 	str = strings.Replace(str, "+", "p", -1)
@@ -36,7 +38,7 @@ func fetch(ctx context.Context, conf *Config, ref *capxml.Reference) (*capxml.Al
 		return nil, err
 	}
 
-	for _, fetchURL := range conf.FetchURLs {
+	for i, fetchURL := range conf.FetchURLs {
 		baseURL, err := url.Parse(fetchURL)
 		if err != nil {
 			log.Fatal(err)
@@ -54,6 +56,10 @@ func fetch(ctx context.Context, conf *Config, ref *capxml.Reference) (*capxml.Al
 
 		log.Printf("Got status code %d", res.StatusCode)
 		if res.StatusCode != 200 {
+			// If it's the last alert, and we have a 404
+			if res.StatusCode == 404 && i == len(conf.FetchURLs)-1 {
+				return nil, notFoundError
+			}
 			continue
 		}
 
@@ -85,8 +91,13 @@ func collectFetch(ctx context.Context, conf *Config) func(ctx goka.Context, msg 
 
 		alert, err := fetch(ctx, conf, &ref)
 		if err != nil {
-			log.Fatal(err)
-			// TODO: Handle
+			if err == notFoundError {
+				log.Printf("Alert not found: %v", ref)
+				return
+			} else {
+				log.Fatal(err)
+				// TODO: Handle
+			}
 		}
 
 		gctx.Emit(goka.Stream(conf.AlertsTopic), alert.ID(), alert)
