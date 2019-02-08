@@ -27,7 +27,7 @@ func clean(str string) string {
 
 func fetch(ctx context.Context, conf *Config, ref *capxml.Reference) (*capxml.Alert, error) {
 	// Generate the URL
-	u, err := url.Parse(fmt.Sprintf("%s/%sI%s.xml",
+	resourceURL, err := url.Parse(fmt.Sprintf("%s/%sI%s.xml",
 		ref.Sent.Format("2006-01-02"),
 		clean(ref.Sent.FormatCAP()),
 		clean(ref.Identifier)))
@@ -42,7 +42,7 @@ func fetch(ctx context.Context, conf *Config, ref *capxml.Reference) (*capxml.Al
 			log.Fatal(err)
 			// TODO: Handle
 		}
-		u = baseURL.ResolveReference(u)
+		u := baseURL.ResolveReference(resourceURL)
 
 		log.Println("Fetching", u.String())
 		res, err := http.Get(u.String())
