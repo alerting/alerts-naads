@@ -90,7 +90,7 @@ func webTemplatesCommonBaseGoHtml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "web/templates/common/base.go.html", size: 141, mode: os.FileMode(436), modTime: time.Unix(1512470557, 0)}
+	info := bindataFileInfo{name: "web/templates/common/base.go.html", size: 141, mode: os.FileMode(436), modTime: time.Unix(1548705120, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -110,7 +110,7 @@ func webTemplatesCommonHeadGoHtml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "web/templates/common/head.go.html", size: 1280, mode: os.FileMode(436), modTime: time.Unix(1512470557, 0)}
+	info := bindataFileInfo{name: "web/templates/common/head.go.html", size: 1280, mode: os.FileMode(436), modTime: time.Unix(1548705120, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -130,7 +130,7 @@ func webTemplatesCommonMenuGoHtml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "web/templates/common/menu.go.html", size: 369, mode: os.FileMode(436), modTime: time.Unix(1512470557, 0)}
+	info := bindataFileInfo{name: "web/templates/common/menu.go.html", size: 369, mode: os.FileMode(436), modTime: time.Unix(1548705120, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -150,7 +150,7 @@ func webTemplatesMonitorDetailsGoHtml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "web/templates/monitor/details.go.html", size: 8148, mode: os.FileMode(436), modTime: time.Unix(1515162593, 0)}
+	info := bindataFileInfo{name: "web/templates/monitor/details.go.html", size: 8148, mode: os.FileMode(436), modTime: time.Unix(1548705120, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -170,7 +170,7 @@ func webTemplatesMonitorIndexGoHtml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "web/templates/monitor/index.go.html", size: 2283, mode: os.FileMode(436), modTime: time.Unix(1512470557, 0)}
+	info := bindataFileInfo{name: "web/templates/monitor/index.go.html", size: 2283, mode: os.FileMode(436), modTime: time.Unix(1548705120, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -190,7 +190,7 @@ func webTemplatesMonitorMenuGoHtml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "web/templates/monitor/menu.go.html", size: 299, mode: os.FileMode(436), modTime: time.Unix(1512470557, 0)}
+	info := bindataFileInfo{name: "web/templates/monitor/menu.go.html", size: 299, mode: os.FileMode(436), modTime: time.Unix(1548705120, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -210,7 +210,7 @@ func webTemplatesQueryIndexGoHtml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "web/templates/query/index.go.html", size: 2479, mode: os.FileMode(436), modTime: time.Unix(1512470557, 0)}
+	info := bindataFileInfo{name: "web/templates/query/index.go.html", size: 2479, mode: os.FileMode(436), modTime: time.Unix(1548705120, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -230,7 +230,7 @@ func webTemplatesIndexIndexGoHtml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "web/templates/index/index.go.html", size: 477, mode: os.FileMode(436), modTime: time.Unix(1512470557, 0)}
+	info := bindataFileInfo{name: "web/templates/index/index.go.html", size: 477, mode: os.FileMode(436), modTime: time.Unix(1548705120, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }

@@ -6,9 +6,9 @@ import (
 
 	"github.com/lovoo/goka/kafka/mock"
 
-	kazoo "github.com/db7/kazoo-go"
 	"github.com/facebookgo/ensure"
 	"github.com/golang/mock/gomock"
+	kazoo "github.com/wvanbergen/kazoo-go"
 )
 
 func TestTopicManager_updateChroot(t *testing.T) {
@@ -49,6 +49,17 @@ func TestTopicManager_updateChroot(t *testing.T) {
 	servers = []string{host + chroot, host2 + "/hi/whatever"}
 	_, _, err = updateChroot(servers)
 	ensure.NotNil(t, err)
+
+	// check chroot with trailing /
+	servers = []string{host + "/////"}
+	_, c, err = updateChroot(servers)
+	ensure.DeepEqual(t, c, "")
+	ensure.Nil(t, err)
+
+	servers = []string{host + "/test/"}
+	_, c, err = updateChroot(servers)
+	ensure.DeepEqual(t, c, "/test")
+	ensure.Nil(t, err)
 
 }
 

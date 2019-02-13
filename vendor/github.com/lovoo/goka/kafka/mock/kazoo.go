@@ -4,8 +4,8 @@
 package mock
 
 import (
-	kazoo_go "github.com/db7/kazoo-go"
 	gomock "github.com/golang/mock/gomock"
+	kazoo_go "github.com/wvanbergen/kazoo-go"
 )
 
 // Mock of TopicManager interface
@@ -47,6 +47,16 @@ func (_m *MockTopicManager) EnsureStreamExists(topic string, npar int) error {
 
 func (_mr *_MockTopicManagerRecorder) EnsureStreamExists(arg0, arg1 interface{}) *gomock.Call {
 	return _mr.mock.ctrl.RecordCall(_mr.mock, "EnsureStreamExists", arg0, arg1)
+}
+
+func (_m *MockTopicManager) EnsureTopicExists(topic string, npar int, rfactor int, config map[string]string) error {
+	ret := _m.ctrl.Call(_m, "EnsureTopicExists", topic, npar, rfactor, config)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+func (_mr *_MockTopicManagerRecorder) EnsureTopicExists(arg0, arg1, arg2, arg3 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "EnsureTopicExists", arg0, arg1, arg2, arg3)
 }
 
 func (_m *MockTopicManager) Partitions(topic string) ([]int32, error) {

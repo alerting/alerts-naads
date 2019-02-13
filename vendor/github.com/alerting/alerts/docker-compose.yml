@@ -3,9 +3,11 @@ services:
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.5.4
     ports:
-      - "9200"
+      - "9200:9200"
     networks:
       - backend
+    volumes:
+      - elasticsearch:/usr/share/elasticsearch/data
 
   alerts:
     image: nexus-docker.zacharyseguin.ca/alerts/alerts
@@ -13,7 +15,7 @@ services:
       context: .
       dockerfile: Dockerfile.alerts
     ports:
-      - "2400"
+      - "2400:2400"
     networks:
       - backend
     command:
@@ -22,7 +24,7 @@ services:
       - --elasticsearch-index=alertsv2
       - --elasticsearch-sniff=false
       - --elasticsearch-healthcheck=false
-      - --resources-service=alerts:2401
+      - --resources-service=resources:2401
       - --resources-insecure
 
   resources:
@@ -59,4 +61,5 @@ networks:
   backend: {}
 
 volumes:
+  elasticsearch: {}
   resources: {}

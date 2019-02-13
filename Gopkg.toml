@@ -21,7 +21,7 @@
 
 
 [[constraint]]
-  branch = "dev"
+  branch = "master"
   name = "github.com/alerting/alerts"
 
 [[constraint]]
