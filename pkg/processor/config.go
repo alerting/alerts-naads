@@ -16,4 +16,6 @@ type Config struct {
 	FetchTopic    string
 	AlertsTopic   string
 	FetchURLs     []string
+
+	System string
 }

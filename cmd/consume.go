@@ -38,6 +38,7 @@ var group string
 var delay int
 var alertsAddress string
 var fetchTopic string
+var system string
 
 // consumeCmd represents the consume command
 var consumeCmd = &cobra.Command{
@@ -65,6 +66,7 @@ var consumeCmd = &cobra.Command{
 			Delay:         delay,
 			AlertsService: alertsService,
 			FetchTopic:    fetchTopic,
+			System:        system,
 		}
 
 		ctx, cancel := context.WithCancel(context.Background())
@@ -102,4 +104,6 @@ func init() {
 	consumeCmd.MarkFlagRequired("alerts-address")
 
 	consumeCmd.Flags().StringVarP(&fetchTopic, "fetch-topic", "f", "", "Fetch topic")
+
+	consumeCmd.Flags().StringVarP(&system, "system", "s", "naads", "System name")
 }

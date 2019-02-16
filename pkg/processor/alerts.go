@@ -72,6 +72,9 @@ func collectAlert(ctx context.Context, conf *Config) func(ctx goka.Context, msg 
 			// TODO: Handle
 		}
 
+		// Add the system
+		alert.System = conf.System
+
 		// Save the alert, if it's good
 		if (alert.Status == cap.Alert_ACTUAL || alert.Status == cap.Alert_EXCERCISE || alert.Status == cap.Alert_TEST) && (alert.MessageType == cap.Alert_ALERT || alert.MessageType == cap.Alert_UPDATE || alert.MessageType == cap.Alert_CANCEL) {
 			if _, err := conf.AlertsService.Add(ctx, &alert); err != nil {
