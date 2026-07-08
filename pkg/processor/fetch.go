@@ -12,9 +12,9 @@ import (
 	"time"
 
 	"github.com/alerting/alerts-naads/pkg/codec"
-	"github.com/alerting/alerts/pkg/cap/xml"
 	"github.com/lovoo/goka"
 	"github.com/lovoo/goka/kafka"
+	capxml "zacharyseguin.ca/alerts/pkg/cap/xml"
 )
 
 var notFoundError = errors.New("Not found")

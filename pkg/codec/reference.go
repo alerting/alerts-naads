@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 
-	capxml "github.com/alerting/alerts/pkg/cap/xml"
+	capxml "zacharyseguin.ca/alerts/pkg/cap/xml"
 )
 
 type Reference struct{}

@@ -8,12 +8,12 @@ import (
 	"time"
 
 	"github.com/alerting/alerts-naads/pkg/codec"
-	"github.com/alerting/alerts/pkg/cap"
-	capxml "github.com/alerting/alerts/pkg/cap/xml"
 	"github.com/golang/protobuf/jsonpb"
 	"github.com/golang/protobuf/ptypes"
 	"github.com/lovoo/goka"
 	"github.com/lovoo/goka/kafka"
+	"zacharyseguin.ca/alerts/pkg/cap"
+	capxml "zacharyseguin.ca/alerts/pkg/cap/xml"
 )
 
 func collectAlert(ctx context.Context, conf *Config) func(ctx goka.Context, msg interface{}) {

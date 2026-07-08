@@ -6,9 +6,9 @@ import (
 	"encoding/json"
 	"errors"
 
-	"github.com/alerting/alerts/pkg/cap"
-	capxml "github.com/alerting/alerts/pkg/cap/xml"
 	"github.com/golang/protobuf/jsonpb"
+	"zacharyseguin.ca/alerts/pkg/cap"
+	capxml "zacharyseguin.ca/alerts/pkg/cap/xml"
 )
 
 type Alert struct{}

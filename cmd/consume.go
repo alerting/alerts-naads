@@ -28,9 +28,9 @@ import (
 	"syscall"
 
 	"github.com/alerting/alerts-naads/pkg/processor"
-	"github.com/alerting/alerts/pkg/alerts"
 	"github.com/spf13/cobra"
 	"google.golang.org/grpc"
+	"zacharyseguin.ca/alerts/pkg/alerts"
 )
 
 var retryTopic string

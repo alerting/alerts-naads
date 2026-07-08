@@ -8,8 +8,8 @@ import (
 	"time"
 
 	"github.com/alerting/alerts-naads/pkg/codec"
-	capxml "github.com/alerting/alerts/pkg/cap/xml"
 	"github.com/lovoo/goka"
+	capxml "zacharyseguin.ca/alerts/pkg/cap/xml"
 )
 
 type Config struct {

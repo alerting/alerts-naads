@@ -1,7 +1,7 @@
 package processor
 
 import (
-	"github.com/alerting/alerts/pkg/alerts"
+	"zacharyseguin.ca/alerts/pkg/alerts"
 )
 
 // TODO: Config type for Alerts, Fetch w/ common core
