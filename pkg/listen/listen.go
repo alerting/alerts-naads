@@ -2,9 +2,12 @@ package listen
 
 import (
 	"context"
+	"crypto/tls"
 	"encoding/xml"
+	"fmt"
 	"log"
 	"net"
+	"strings"
 	"time"
 
 	"github.com/alerting/alerts-naads/pkg/codec"
@@ -26,8 +29,14 @@ func Run(ctx context.Context, conf Config) error {
 	}
 	defer emitter.Finish()
 
-	dialer := &net.Dialer{
-		Timeout: 30 * time.Second,
+	dialer := &tls.Dialer{
+		NetDialer: &net.Dialer{
+			Timeout: 30 * time.Second,
+		},
+		Config: &tls.Config{
+			MinVersion: tls.VersionTLS12,
+			ServerName: strings.Split(conf.Address, ":")[0],
+		},
 	}
 	conn, err := dialer.DialContext(ctx, "tcp", conf.Address)
 	if err != nil {
@@ -47,13 +56,13 @@ func Run(ctx context.Context, conf Config) error {
 			return ctx.Err()
 		default:
 			if err = decoder.Decode(&alert); err != nil {
-				return err
+				return fmt.Errorf("failed to decode: %w", err)
 			}
 
 			log.Printf("Received: %s, %v,%v,%v", alert.ID(), alert.Sender, alert.Identifier, alert.Sent)
 			err = emitter.EmitSync(alert.ID(), &alert)
 			if err != nil {
-				return err
+				return fmt.Errorf("failed to emit message: %w", err)
 			}
 		}
 	}
